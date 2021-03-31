@@ -1,44 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>ESLint Report</title>
-	<meta charset="utf-8">
-	<%= styles %>
+    <title>Transform Report</title>
+    <meta charset="utf-8">
+    <%= styles %>
 </head>
 <body>
-	<div id="overview" class="bg-<%= reportColor %>">
-		<h1>ESLint Report - <small class="text-<%= reportColor %>"><%= reportColor %></small></h1>
-	</div>
-	<div class="container">
-		<div id="summary">
-			<h2 class="page-header">Summary</h2>
-			<div><%= reportSummary %></div>
-			<%= summaryDetails %>
-		</div>
-		<div id="details">
-			<h2 class="page-header">Details</h2>
-			<fieldset class="filters">
-				<legend>Filters:</legend>
-				<label>
-					<input type="radio" name="filters" value="lint-result" checked>
-					<span class="btn-radio">All</span>
-				</label>
-				<label>
-					<input type="radio" name="filters" value="warning">
-					<span class="btn-radio text-warning">Warnings</span>
-				</label>
-				<label>
-					<input type="radio" name="filters" value="error">
-					<span class="btn-radio text-error">Errors</span>
-				</label>
-			</fieldset>
-			<table id="fileOverview">
-				<tbody>
-					<%= results %>
-				</tbody>
-			</table>
-		</div>
-	</div>
-	<%= scripts %>
+<div id="overview" class="bg-<%= reportColor %>">
+    <h1>Transform Report</h1>
+</div>
+<div class="container">
+    <div>
+        <p>
+            Welcome to transform report! To help us migrate to typescript, the transform tool is able to
+            automate a lot of the repetitive work for us. However, we still have to do some work to complete
+            the job.
+
+            The purpose of this page is to display the remaining work for each file after the transform
+            has been applied. In other words, we can see which files are easier to transform i.e. least errors vs
+            more difficult/problematic to transform i.e a lot of errors.
+        </p>
+
+        <p class="bg-success">Green means great! The transform did all the work and you get a free ride!</p>
+        <p class="bg-error">Red means the transform did most of the work but there are still issues to be manually
+            fixed.</p>
+
+        <p>
+            This should give us a better understanding of how much work is left for migrating components, and
+            which files to tackle next. We should tackle all the free ones asap to gain traction.
+            Also note that these errors will decrease even further as the transform tool improves. For example,
+            if the transform tool removes unused imports, then all no-unused-vars errors related to unused imports
+            across all files will disappear.
+        </p>
+
+        <p>Happy transforming! Thank you for using transform.</p>
+    </div>
+    <div id="summary">
+        <h2 class="page-header">Summary</h2>
+        <div><%= reportSummary %></div>
+        <%= summaryDetails %>
+    </div>
+    <div id="details">
+        <h2 class="page-header">Details</h2>
+        <fieldset class="filters">
+            <legend>Filters:</legend>
+            <label>
+                <input type="radio" name="filters" value="lint-result" checked>
+                <span class="btn-radio">All</span>
+            </label>
+            <label>
+                <input type="radio" name="filters" value="warning">
+                <span class="btn-radio text-warning">Warnings</span>
+            </label>
+            <label>
+                <input type="radio" name="filters" value="error">
+                <span class="btn-radio text-error">Errors</span>
+            </label>
+        </fieldset>
+        <table id="fileOverview">
+            <tbody>
+            <%= results %>
+            </tbody>
+        </table>
+    </div>
+</div>
+<%= scripts %>
 </body>
 </html>
