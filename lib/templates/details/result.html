@@ -6,6 +6,7 @@
         <%- filePath %>
     </th>
     <th class="result-summary">
-      <%- summary %>
+        <%- summary %>
+        <span onclick="copyTransformCommand(event, '<%- filePath %>');">(transform command)</span>
     </th>
 </tr>

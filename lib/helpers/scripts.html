@@ -3,6 +3,21 @@
 		filters = document.querySelectorAll('input[name="filters"]'),
 		tabs = document.querySelectorAll('.nav-tabs > li > button');
 
+    function copyTransformCommand(event, filePath) {
+      const jsFilePath = filePath.substring(1, filePath.length - 4) + '.js'
+      const transformCommand = 'yarn transform ' + jsFilePath;
+
+      const el = document.createElement('textarea');
+      el.value = transformCommand;	//str is your string to copy
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');	// Copy command
+      document.body.removeChild(el);
+
+      alert('copied: ' + transformCommand);
+      event.stopImmediatePropagation();
+    }
+
 	// helper functions
 	function hideElement(element) {
 		if (!element.className.includes('hidden')) {
